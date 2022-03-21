@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:group20220306/toggl_clone/models/time_entry.dart';
+import 'package:group20220306/toggl_clone/screens/add_entry_screen.dart';
 import 'package:group20220306/toggl_clone/widgets/app_drawer.dart';
 import 'package:group20220306/toggl_clone/widgets/time_entry_card.dart';
 import 'package:grouped_list/grouped_list.dart';
@@ -14,6 +15,9 @@ class TogglHomeScreeen extends StatefulWidget {
 }
 
 class _TogglHomeScreeenState extends State<TogglHomeScreeen> {
+
+  var actionIcon = Icon(Icons.add);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +35,21 @@ class _TogglHomeScreeenState extends State<TogglHomeScreeen> {
           ),
         ),
         itemBuilder: (context, TimeEntry element) => TimeEntryCard(element),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: actionIcon,
+        onPressed: () {
+
+          if (actionIcon.icon == Icons.add) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => AddEntryScreen(),))
+                      .then((value) {
+              setState(() {
+
+              });
+            });
+          }
+
+        },
       ),
     );
   }
